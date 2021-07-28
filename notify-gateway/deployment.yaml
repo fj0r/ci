@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: notify
-        image: fj0rd/0x:notify-gateway
+        image: fj0rd/ci:notify-gateway
         imagePullPolicy: IfNotPresent
         env:
         - name: ENDPOINT

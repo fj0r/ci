@@ -73,3 +73,11 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:notify-gateway
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: build event-filter
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: event-filter/filter
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:event-filter
+          labels: ${{ steps.meta.outputs.labels }}

@@ -1,6 +1,4 @@
 import os
-import json
-from json import JSONEncoder
 
 from pydantic import BaseModel
 from fastapi import FastAPI
@@ -14,10 +12,16 @@ class Entity(BaseModel):
     type: Optional[str]
     value: str
 
+class Recipient(BaseModel):
+    email: str
+    wechat: str
+    fullname: str
+
 class Item(BaseModel):
     name: str
     type: str
     value: Optional[str]
+    recipient: Optional[Recipient]
     items: List[Entity]
 
 app = FastAPI()
@@ -28,11 +32,13 @@ async def info():
 
 @app.post("/")
 async def index(item: Item):
-    message = f"""
-    ### {item.name}
-    `{item.type}`"""
+    message = ''
+
+    if item.recipient:
+        message += f'@{item.recipient.wechat} \n'
+    message += f"### {item.name}\n`{item.type}\n`"
     for i in item.items:
-        message += f'\n- {i.name}: {i.value}'
+        message += f'\n **{i.name}**: {i.value}\n'
 
     payload = {"msgtype":"markdown","markdown":{"content": message}}
 
@@ -42,7 +48,5 @@ async def index(item: Item):
             return r.text
     else:
         return payload
-
-
 
 
