@@ -12,6 +12,7 @@ on:
     tags: [ 'v*.*.*' ]
 
 env:
+  REGISTRY: docker.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: fj0rd/ci
 
@@ -53,5 +54,22 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: build ci-ssh
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:ssh
+          file: Dockerfile-ssh
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: build notify-gateway
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: notify-gateway
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:notify-gateway
           labels: ${{ steps.meta.outputs.labels }}
