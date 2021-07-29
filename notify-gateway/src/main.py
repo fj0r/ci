@@ -34,11 +34,12 @@ async def info():
 async def index(item: Item):
     message = ''
 
-    if item.recipient:
-        message += f'@{item.recipient.wechat} \n'
-    message += f"### {item.name}\n`{item.type}\n`"
+    message += f"**{item.name}** `{item.type}`\n"
     for i in item.items:
-        message += f'\n **{i.name}**: {i.value}\n'
+        message += f'><font color="comment">{i.name}</font>: {i.value}\n'
+
+    if item.recipient:
+        message += f'\n<@{item.recipient.wechat}>'
 
     payload = {"msgtype":"markdown","markdown":{"content": message}}
 
