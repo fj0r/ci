@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=python:rc-alpine3.14
+ARG BASE_IMAGE=python:alpine
 FROM ${BASE_IMAGE}
 
 ENV LANG=C.UTF-8
@@ -16,7 +16,7 @@ RUN set -eux \
   ; pip3 --no-cache-dir install \
       fastapi uvicorn httpx aiofile \
       PyParsing decorator more-itertools \
-      typer pyyaml cachetools chronyk
+      typer structlog pyyaml cachetools chronyk
 
 COPY src /app
 

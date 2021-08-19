@@ -1,4 +1,4 @@
-FROM python:alpine3.13
+FROM python:alpine
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8 TIMEZONE=Asia/Shanghai
 ENV PYTHONUNBUFFERED=x
@@ -10,5 +10,5 @@ RUN set -eux \
   ; ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime \
   ; echo "$TIMEZONE" > /etc/timezone \
   ; pip3 --no-cache-dir install \
-        pyyaml requests furl markdown pystache
+        structlog pyyaml requests furl markdown pystache
 
