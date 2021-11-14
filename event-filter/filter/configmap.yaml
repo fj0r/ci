@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: event-filter
-  namespace: monitoring
-data:
-  notify-gateway: http://notify.argo
-  cluster: dev
