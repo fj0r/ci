@@ -57,27 +57,10 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: build ci-ssh
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:ssh
-          file: Dockerfile-ssh
-          labels: ${{ steps.meta.outputs.labels }}
-
       - name: build notify-gateway
         uses: docker/build-push-action@v2
         with:
           context: notify-gateway
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:notify-gateway
-          labels: ${{ steps.meta.outputs.labels }}
-
-      - name: build event-filter
-        uses: docker/build-push-action@v2
-        with:
-          context: event-filter/filter
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:event-filter
           labels: ${{ steps.meta.outputs.labels }}

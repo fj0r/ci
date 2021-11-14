@@ -6,7 +6,8 @@ ENV PYTHONUNBUFFERED=x
 RUN set -eux \
   ; apk update && apk upgrade \
   ; rm -rf /var/cache/apk/* \
-  ; apk add --no-cache tzdata curl jq \
+  ; apk add --no-cache tzdata curl \
+      jq git openssh-client rsync just \
   ; ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime \
   ; echo "$TIMEZONE" > /etc/timezone \
   ; pip3 --no-cache-dir install \
