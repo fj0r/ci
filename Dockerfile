@@ -11,6 +11,7 @@ RUN set -eux \
   ; ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime \
   ; echo "$TIMEZONE" > /etc/timezone \
   ; pip3 --no-cache-dir install \
-      structlog pyyaml requests furl markdown pystache \
+      pydantic structlog pyyaml \
+      requests furl markdown pystache \
       psycopg[binary]
 
