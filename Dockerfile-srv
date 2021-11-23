@@ -6,7 +6,7 @@ ENV PYTHONUNBUFFERED=x
 RUN set -eux \
   ; apk update && apk upgrade \
   ; rm -rf /var/cache/apk/* \
-  ; apk add --no-cache tzdata \
+  ; apk add --no-cache tzdata bash \
   ; ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime \
   ; echo "$TIMEZONE" > /etc/timezone \
   ; pip3 --no-cache-dir install \
