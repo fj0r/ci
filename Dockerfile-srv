@@ -14,7 +14,7 @@ RUN set -eux \
       fastapi uvicorn httpx aiofile \
       PyParsing decorator more-itertools \
       typer structlog pyyaml cachetools chronyk \
-      psycopg[binary]
+      psycopg[binary] kafka-python
 
 WORKDIR /app
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "3000"]

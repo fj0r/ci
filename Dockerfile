@@ -13,5 +13,5 @@ RUN set -eux \
   ; pip3 --no-cache-dir install \
       pydantic structlog pyyaml PyParsing \
       requests furl markdown pystache \
-      psycopg[binary]
+      psycopg[binary] kafka-python
 
