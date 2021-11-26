@@ -12,6 +12,6 @@ RUN set -eux \
   ; echo "$TIMEZONE" > /etc/timezone \
   ; pip3 --no-cache-dir install \
       pydantic structlog pyyaml PyParsing \
-      requests furl markdown pystache \
+      requests furl markdown chevron \
       psycopg[binary] kafka-python
 
