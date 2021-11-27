@@ -49,12 +49,30 @@ jobs:
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
-      - name: Build and push Docker image
+      - name: ci base
         uses: docker/build-push-action@v2
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: ci kubectl
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: Dockerfile-k8s
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:k8s
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: ci buildah
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: Dockerfile-buildah
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:buildah
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: build srv
