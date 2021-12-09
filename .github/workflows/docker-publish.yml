@@ -57,6 +57,15 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           labels: ${{ steps.meta.outputs.labels }}
 
+      - name: ci remote
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: Dockerfile-remote
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:remote
+          labels: ${{ steps.meta.outputs.labels }}
+
       - name: ci kubectl
         uses: docker/build-push-action@v2
         with:
