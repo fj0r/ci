@@ -15,7 +15,7 @@ RUN set -eux \
   ; pip3 --no-cache-dir install \
       pydantic structlog pyyaml PyParsing \
       requests furl markdown chevron \
-      psycopg[binary] kafka-python \
+      psycopg kafka-python \
   ; apk del .build-deps \
   ; rm -rf /var/cache/apk/*
 
