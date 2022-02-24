@@ -61,7 +61,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: Dockerfile-remote
+          file: remote.Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:remote
           labels: ${{ steps.meta.outputs.labels }}
@@ -70,7 +70,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: Dockerfile-k8s
+          file: k8s.Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:k8s
           labels: ${{ steps.meta.outputs.labels }}
@@ -79,7 +79,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: Dockerfile-buildah
+          file: buildah.Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:skopeo
           labels: ${{ steps.meta.outputs.labels }}
@@ -88,7 +88,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: Dockerfile-buildah
+          file: buildah.Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:buildah
           labels: ${{ steps.meta.outputs.labels }}
@@ -97,7 +97,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: Dockerfile-srv
+          file: srv.Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:srv
           labels: ${{ steps.meta.outputs.labels }}
