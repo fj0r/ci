@@ -16,6 +16,7 @@ RUN set -eux \
       pydantic structlog pyyaml PyParsing \
       requests furl markdown chevron \
       psycopg[binary] kafka-python \
+  ; pip3 --no-cache-dir install git+https://github.com/couler-proj/couler --ignore-installed \
   ; apk del .build-deps \
   ; rm -rf /var/cache/apk/*
 
