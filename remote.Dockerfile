@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM ubuntu:jammy
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8 TIMEZONE=Asia/Shanghai
 ENV PYTHONUNBUFFERED=x
@@ -7,9 +7,9 @@ RUN set -eux \
   ; apt-get update -y \
   ; DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends \
-      tzdata \
+      tzdata curl \
       python3 python3-pip \
-      jq git rsync curl \
+      jq git rsync openssh-client \
       build-essential \
   ; ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime \
   ; echo "$TIMEZONE" > /etc/timezone \
@@ -21,8 +21,7 @@ RUN set -eux \
   ; apt-get install -y --no-install-recommends build-essential \
   ; pip3 --no-cache-dir install \
       pydantic structlog pyyaml PyParsing \
-      requests furl markdown chevron \
-      paramiko fabric \
-      psycopg kafka-python \
+      httpx markdown chevron \
+      ansible psycopg kafka-python \
   ; apt-get -y remove build-essential \
   ; apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
