@@ -14,7 +14,7 @@ RUN set -eux \
   ; ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime \
   ; echo "$TIMEZONE" > /etc/timezone \
   \
-  ; just_url=$(curl -sSL https://api.github.com/repos/casey/just/releases Accept:application/vnd.github.v3+json \
+  ; just_url=$(curl -sSL https://api.github.com/repos/casey/just/releases -H 'Accept: application/vnd.github.v3+json' \
              | jq -r '[.[]|select(.prerelease == false)][0].assets[].browser_download_url' | grep x86_64-unknown-linux-musl) \
   ; curl -sSL ${just_url} | tar zxf - -C /usr/local/bin just \
   \
