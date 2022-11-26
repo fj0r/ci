@@ -1,4 +1,0 @@
-:3333 {
-    tls internal
-    reverse_proxy http://localhost:9876
-}
