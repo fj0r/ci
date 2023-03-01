@@ -25,7 +25,7 @@ RUN set -eux \
       httpx markdown chevron \
       ansible \
       psycopg[binary] kafka-python \
-  ; apt-get -y remove build-essential \
+  ; apt-get remove -y build-essential \
   ; apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
   \
   ; ansible-galaxy collection install amazon.aws \
