@@ -1,4 +1,4 @@
-FROM ubuntu:jammy
+FROM debian:testing-slim
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8 TIMEZONE=Asia/Shanghai
 ENV PYTHONUNBUFFERED=x
@@ -20,7 +20,7 @@ RUN set -eux \
   ; curl -sSL ${just_url} | tar zxf - -C /usr/local/bin just \
   \
   ; apt-get install -y --no-install-recommends build-essential \
-  ; pip3 --no-cache-dir install \
+  ; pip3 install --no-cache-dir --prefix=/usr \
       pydantic structlog pyyaml PyParsing \
       httpx markdown chevron \
       ansible \

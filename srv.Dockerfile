@@ -9,7 +9,7 @@ RUN set -eux \
   ; apk add --no-cache tzdata bash \
   ; ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime \
   ; echo "$TIMEZONE" > /etc/timezone \
-  ; pip3 --no-cache-dir install \
+  ; pip3 install --no-cache-dir --prefix=/usr \
       pydantic \
       fastapi uvicorn httpx aiofile \
       PyParsing decorator more-itertools \
