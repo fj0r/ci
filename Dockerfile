@@ -26,10 +26,16 @@ RUN set -eux \
       httpx markdown chevron \
       ansible \
       psycopg[binary] kafka-python \
+      pymongo github3.py \
   ; apt-get remove -y build-essential \
   ; apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
   \
-  ; ansible-galaxy collection install amazon.aws \
+  ; ansible-galaxy collection install community.docker \
+  ; ansible-galaxy collection install community.mongodb \
+  ; ansible-galaxy collection install community.mysql \
+  ; ansible-galaxy collection install community.postgresql \
+  ; ansible-galaxy collection install community.general \
+  ; ansible-galaxy collection install community.windows \
   ; ansible-galaxy collection install kubernetes.core \
   \
   ; k8s_ver=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt | cut -c 2-) \
