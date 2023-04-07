@@ -30,6 +30,7 @@ RUN set -eux \
   ; apt-get remove -y build-essential \
   ; apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
   \
+  ; ansible-galaxy collection install ansible.posix \
   ; ansible-galaxy collection install community.docker \
   ; ansible-galaxy collection install community.mongodb \
   ; ansible-galaxy collection install community.mysql \
