@@ -21,7 +21,7 @@ RUN set -eux \
   ; curl -sSL ${just_url} | tar zxf - -C /usr/local/bin just \
   \
   ; apt-get install -y --no-install-recommends build-essential \
-  ; pip3 install --no-cache-dir ${PIP_FLAGS} \
+  ; pip3 install --break-system-packages --no-cache-dir ${PIP_FLAGS} \
       pydantic structlog pyyaml PyParsing \
       httpx markdown chevron \
       ansible kubernetes \
