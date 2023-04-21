@@ -60,14 +60,6 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:srv
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: build bullseye
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:bullseye
-          labels: ${{ steps.meta.outputs.labels }}
-
       - name: build base
         uses: docker/build-push-action@v3
         with:
