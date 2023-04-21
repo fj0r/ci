@@ -20,6 +20,9 @@ RUN set -eux \
   ; just_url="https://github.com/casey/just/releases/latest/download/just-${just_ver}-x86_64-unknown-linux-musl.tar.gz" \
   ; curl -sSL ${just_url} | tar zxf - -C /usr/local/bin just \
   \
+  ; yq_url="https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64.tar.gz" \
+  ; curl -sSL ${yq_url} | tar zxf - ./yq_linux_amd64 && mv yq_linux_amd64 /usr/local/bin/yq \
+  \
   ; apt-get install -y --no-install-recommends build-essential \
   ; pip3 install --break-system-packages --no-cache-dir ${PIP_FLAGS} \
       pydantic structlog pyyaml PyParsing \
