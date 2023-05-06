@@ -8,7 +8,7 @@ RUN set -eux \
   ; apt-get update -y \
   ; DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends \
-      tzdata curl \
+      tzdata curl tree \
       python3 python3-pip \
       jq git rsync openssh-client \
       build-essential \
