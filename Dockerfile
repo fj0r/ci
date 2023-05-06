@@ -13,6 +13,7 @@ RUN set -eux \
       jq git rsync openssh-client \
       build-essential \
       buildah skopeo \
+  ; ln -sf /usr/bin/python3 /usr/bin/python \
   ; ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime \
   ; echo "$TIMEZONE" > /etc/timezone \
   \
@@ -26,7 +27,7 @@ RUN set -eux \
   ; apt-get install -y --no-install-recommends build-essential \
   ; pip3 install --break-system-packages --no-cache-dir ${PIP_FLAGS} \
       pydantic structlog pyyaml PyParsing \
-      httpx markdown chevron \
+      httpx furl markdown chevron \
       ansible kubernetes \
       psycopg[binary] kafka-python \
       pymongo github3.py \
