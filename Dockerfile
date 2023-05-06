@@ -12,7 +12,7 @@ RUN set -eux \
       python3 python3-pip \
       jq git rsync openssh-client \
       build-essential \
-      buildah skopeo \
+      buildah skopeo podman \
   ; ln -sf /usr/bin/python3 /usr/bin/python \
   ; ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime \
   ; echo "$TIMEZONE" > /etc/timezone \
