@@ -1,4 +1,4 @@
-FROM debian:testing-slim
+FROM fj0rd/io:base
 
 ARG PIP_FLAGS="--break-system-packages"
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8 TIMEZONE=Asia/Shanghai
@@ -8,9 +8,8 @@ RUN set -eux \
   ; apt-get update -y \
   ; DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends \
-      tzdata curl tree \
       python3 python3-pip \
-      jq git rsync openssh-client \
+      git openssh-client \
       build-essential \
       buildah skopeo podman \
   ; ln -sf /usr/bin/python3 /usr/bin/python \
