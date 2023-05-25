@@ -1,4 +1,5 @@
-FROM fj0rd/io:base
+ARG BASEIMAGE=fj0rd/io:base
+FROM ${BASEIMAGE}
 
 ARG PIP_FLAGS="--break-system-packages"
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8 TIMEZONE=Asia/Shanghai
@@ -28,7 +29,7 @@ RUN set -eux \
   ; curl -sSL ${yq_url} | tar zxf - ./yq_linux_amd64 && mv yq_linux_amd64 /usr/local/bin/yq \
   \
   ; apt-get install -y --no-install-recommends build-essential \
-  ; pip3 install --break-system-packages --no-cache-dir ${PIP_FLAGS} \
+  ; pip3 install --no-cache-dir ${PIP_FLAGS} \
       pydantic structlog pyyaml PyParsing \
       httpx furl markdown chevron \
       ansible kubernetes \
