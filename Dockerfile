@@ -1,7 +1,8 @@
 ARG BASEIMAGE=fj0rd/io:base
 FROM ${BASEIMAGE}
 
-ARG PIP_FLAGS="--break-system-packages"
+#--break-system-packages
+ARG PIP_FLAGS=""
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8 TIMEZONE=Asia/Shanghai
 ENV PYTHONUNBUFFERED=x
 
