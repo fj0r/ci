@@ -18,17 +18,6 @@ RUN set -eux \
   ; ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime \
   ; echo "$TIMEZONE" > /etc/timezone \
   \
-  ; just_ver=$(curl -sSL https://api.github.com/repos/casey/just/releases/latest | jq -r '.tag_name') \
-  ; just_url="https://github.com/casey/just/releases/latest/download/just-${just_ver}-x86_64-unknown-linux-musl.tar.gz" \
-  ; curl -sSL ${just_url} | tar zxf - -C /usr/local/bin just \
-  \
-  ; dust_ver=$(curl -sSL https://api.github.com/repos/bootandy/dust/releases/latest | jq -r '.tag_name') \
-  ; dust_url="https://github.com/bootandy/dust/releases/latest/download/dust-${dust_ver}-x86_64-unknown-linux-musl.tar.gz" \
-  ; curl -sSL ${dust_url} | tar zxf - -C /usr/local/bin --strip-components=1 --wildcards '*/dust' \
-  \
-  ; yq_url="https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64.tar.gz" \
-  ; curl -sSL ${yq_url} | tar zxf - ./yq_linux_amd64 && mv yq_linux_amd64 /usr/local/bin/yq \
-  \
   ; apt-get install -y --no-install-recommends build-essential \
   ; pip3 install --no-cache-dir ${PIP_FLAGS} \
       pydantic structlog pyyaml PyParsing \
