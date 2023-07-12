@@ -68,6 +68,15 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           labels: ${{ steps.meta.outputs.labels }}
 
+      - name: build ansible
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: ansible.Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:ansible
+          labels: ${{ steps.meta.outputs.labels }}
+
       - name: build remote
         uses: docker/build-push-action@v3
         with:
