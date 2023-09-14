@@ -1,4 +1,4 @@
-ARG BASEIMAGE=fj0rd/io:base
+ARG BASEIMAGE=fj0rd/io:common
 FROM ${BASEIMAGE}
 
 ARG PIP_FLAGS="--break-system-packages"
